@@ -1,0 +1,105 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--text);
+  background: var(--dark);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; display: block; }
+a { text-decoration: none; color: inherit; }
+button { font-family: inherit; }
+
+.container {
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 4vw, 2rem);
+}
+
+.section {
+  padding-block: var(--section-py);
+}
+
+.section-label {
+  @include section-label;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  line-height: 1.05;
+  letter-spacing: 0.02em;
+  color: var(--light);
+  margin-bottom: 1rem;
+}
+
+.section-title--dark {
+  color: var(--primary);
+}
+
+.section-subtitle {
+  font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+  color: var(--gray-400);
+  max-width: 56ch;
+  line-height: 1.7;
+}
+
+.btn-primary {
+  @include btn-base;
+  background: var(--accent);
+  color: var(--dark);
+  &:hover {
+    background: #ffc929;
+    transform: translateY(-2px);
+    box-shadow: var(--glow-accent);
+  }
+}
+
+.btn-outline {
+  @include btn-base;
+  background: transparent;
+  color: var(--light);
+  border: 1.5px solid rgba(255,255,255,0.35);
+  &:hover {
+    background: rgba(255,255,255,0.08);
+    border-color: rgba(255,255,255,0.7);
+    transform: translateY(-2px);
+  }
+}
+
+.btn-secondary {
+  @include btn-base;
+  background: var(--secondary);
+  color: var(--light);
+  &:hover {
+    background: #0066ff;
+    transform: translateY(-2px);
+    box-shadow: var(--glow-blue);
+  }
+}
+
+// Scroll-reveal utility
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+// Scrollbar
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--dark); }
+::-webkit-scrollbar-thumb { background: var(--secondary); border-radius: 3px; }

@@ -1,0 +1,110 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.section {
+  background: var(--gray-100);
+  padding-block: var(--section-py);
+}
+
+.header {
+  text-align: center;
+  margin-bottom: clamp(3rem, 5vw, 4rem);
+}
+
+.sliderWrap {
+  @include flex(row, center, center, 1.5rem);
+  max-width: 760px;
+  margin-inline: auto;
+
+  @include mobile { gap: 0.75rem; }
+}
+
+.navBtn {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: #fff;
+  border: 1.5px solid var(--gray-200);
+  @include flex(row, center, center, 0);
+  cursor: pointer;
+  flex-shrink: 0;
+  color: var(--primary);
+  font-size: 0.9rem;
+  transition: all 0.2s;
+  box-shadow: var(--shadow-sm);
+
+  &:hover {
+    background: var(--primary);
+    color: #fff;
+    border-color: var(--primary);
+  }
+}
+
+.slider { flex: 1; min-width: 0; }
+
+.card {
+  background: #fff;
+  border-radius: var(--radius-xl);
+  padding: clamp(2rem, 4vw, 3rem);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--gray-200);
+}
+
+.quoteIcon {
+  font-size: 2rem;
+  color: var(--accent);
+  opacity: 0.6;
+  margin-bottom: 1.25rem;
+}
+
+.text {
+  font-size: clamp(1rem, 1.8vw, 1.1rem);
+  color: #333;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+  font-style: italic;
+}
+
+.stars {
+  @include flex(row, center, flex-start, 0.25rem);
+  color: var(--accent);
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+}
+
+.author {
+  @include flex(row, center, flex-start, 1rem);
+
+  strong { display: block; font-size: 0.95rem; color: var(--primary); font-weight: 700; }
+  span { font-size: 0.82rem; color: #888; }
+}
+
+.avatar {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  @include flex(row, center, center, 0);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.dots {
+  @include flex(row, center, center, 0.5rem);
+  margin-top: 2rem;
+}
+
+.dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--gray-200);
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s;
+}
+
+.dotActive {
+  background: var(--secondary);
+  width: 24px;
+  border-radius: 4px;
+}

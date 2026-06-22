@@ -1,0 +1,104 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.promos {
+  position: relative;
+  padding-block: var(--section-py);
+  background: var(--primary);
+  overflow: hidden;
+}
+
+.bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 20% 50%, rgba(0,87,217,0.25) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 60% at 80% 30%, rgba(245,183,0,0.08) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: clamp(3rem, 5vw, 4.5rem);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+
+  @include tablet { grid-template-columns: repeat(2, 1fr); }
+  @include mobile { grid-template-columns: 1fr; }
+}
+
+// Make the 4th and 5th items span nicely on desktop
+.grid > :nth-child(4) {
+  @include laptop { grid-column: 1 / 2; }
+}
+.grid > :nth-child(5) {
+  @include laptop { grid-column: 2 / 3; }
+}
+
+.card {
+  position: relative;
+  @include glass(16px, rgba(255,255,255,0.06), rgba(255,255,255,0.1));
+  border-radius: var(--radius-lg);
+  padding: 2.2rem 1.8rem;
+  overflow: hidden;
+  transition: border-color 0.3s;
+
+  &:hover {
+    border-color: color-mix(in srgb, var(--promo-color) 50%, transparent);
+    .glow { opacity: 1; }
+  }
+}
+
+.iconWrap {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--promo-color) 15%, transparent);
+  border: 1px solid color-mix(in srgb, var(--promo-color) 35%, transparent);
+  @include flex(row, center, center, 0);
+  margin-bottom: 1.4rem;
+
+  svg { font-size: 1.5rem; color: var(--promo-color); }
+}
+
+.promoTitle {
+  font-size: clamp(1rem, 1.8vw, 1.15rem);
+  font-weight: 700;
+  color: var(--light);
+  margin-bottom: 0.7rem;
+  line-height: 1.3;
+}
+
+.promoDesc {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+.tag {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: opacity 0.2s;
+
+  &:hover { opacity: 0.7; }
+}
+
+.glow {
+  position: absolute;
+  bottom: -40px; right: -40px;
+  width: 120px; height: 120px;
+  border-radius: 50%;
+  background: var(--promo-color);
+  filter: blur(60px);
+  opacity: 0;
+  transition: opacity 0.4s;
+  pointer-events: none;
+}

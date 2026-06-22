@@ -1,0 +1,176 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.footer {
+  background: #04101f;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding-top: clamp(3.5rem, 6vw, 5.5rem);
+  padding-bottom: 2rem;
+  position: relative;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1.5fr;
+  gap: 3rem;
+  margin-bottom: 3.5rem;
+
+  @include tablet { grid-template-columns: 1fr 1fr; }
+  @include mobile { grid-template-columns: 1fr; gap: 2rem; }
+}
+
+// Brand col
+.brand { }
+
+.logoWrap {
+  @include flex(row, center, flex-start, 0.75rem);
+  margin-bottom: 1.25rem;
+
+  img {
+    width: 44px; height: 44px;
+    border-radius: 8px;
+    object-fit: contain;
+  }
+
+  strong {
+    display: block;
+    font-size: 1rem;
+    font-weight: 800;
+    color: var(--light);
+    line-height: 1.1;
+  }
+
+  small {
+    font-size: 0.65rem;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+}
+
+.tagline {
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.45);
+  line-height: 1.7;
+  max-width: 30ch;
+  margin-bottom: 1.5rem;
+}
+
+.socials {
+  @include flex(row, center, flex-start, 0.75rem);
+
+  a {
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.12);
+    @include flex(row, center, center, 0);
+    color: rgba(255,255,255,0.55);
+    font-size: 1rem;
+    transition: all 0.25s;
+
+    &:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: rgba(245,183,0,0.08);
+    }
+  }
+}
+
+.wa { &:hover { border-color: #25D366 !important; color: #25D366 !important; background: rgba(37,211,102,0.08) !important; } }
+
+// Nav groups
+.linkGroup {
+  h4 {
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 1.25rem;
+  }
+
+  ul { list-style: none; @include flex(column, flex-start, flex-start, 0.65rem); }
+
+  a {
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.55);
+    transition: color 0.2s;
+    &:hover { color: var(--accent); }
+  }
+}
+
+// Contact col
+.contactCol {
+  h4 {
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 1.25rem;
+  }
+}
+
+.contactItem {
+  @include flex(row, flex-start, flex-start, 0.75rem);
+  margin-bottom: 1.1rem;
+
+  svg { color: var(--secondary); font-size: 0.85rem; margin-top: 0.25rem; flex-shrink: 0; }
+
+  span {
+    display: block;
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.35);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 0.2rem;
+  }
+
+  a {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.65);
+    transition: color 0.2s;
+    &:hover { color: var(--accent); }
+  }
+}
+
+// Bottom bar
+.bottom {
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding-top: 1.5rem;
+  @include flex(row, center, space-between, 1rem);
+  flex-wrap: wrap;
+
+  p {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.3);
+  }
+}
+
+// Floating WhatsApp button
+.waFloat {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 999;
+  width: 58px; height: 58px;
+  background: #25D366;
+  border-radius: 50%;
+  @include flex(row, center, center, 0);
+  color: #fff;
+  font-size: 1.7rem;
+  box-shadow: 0 8px 32px rgba(37, 211, 102, 0.45);
+  transition: all 0.3s var(--ease-bounce);
+
+  &:hover {
+    transform: scale(1.12);
+    box-shadow: 0 12px 40px rgba(37, 211, 102, 0.6);
+  }
+
+  @include mobile {
+    width: 52px; height: 52px;
+    font-size: 1.5rem;
+    bottom: 1.5rem;
+    right: 1.5rem;
+  }
+}

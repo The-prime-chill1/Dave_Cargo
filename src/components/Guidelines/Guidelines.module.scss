@@ -1,0 +1,82 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.section {
+  background: var(--primary);
+  padding-block: var(--section-py);
+}
+
+.header {
+  text-align: center;
+  margin-bottom: clamp(3rem, 5vw, 4.5rem);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  max-width: 900px;
+  margin-inline: auto;
+
+  @include mobile { grid-template-columns: 1fr; }
+}
+
+.card {
+  border-radius: var(--radius-xl);
+  padding: 2.5rem;
+  border: 1.5px solid transparent;
+
+  ul {
+    list-style: none;
+    @include flex(column, stretch, flex-start, 0.85rem);
+  }
+
+  li {
+    @include flex(row, center, flex-start, 0.75rem);
+    font-size: 0.95rem;
+    span { color: rgba(255,255,255,0.8); }
+  }
+}
+
+.allowed {
+  background: rgba(0, 184, 148, 0.07);
+  border-color: rgba(0, 184, 148, 0.25);
+}
+
+.restricted {
+  background: rgba(230, 57, 70, 0.07);
+  border-color: rgba(230, 57, 70, 0.25);
+}
+
+.cardHead {
+  @include flex(row, center, flex-start, 0.9rem);
+  margin-bottom: 2rem;
+
+  h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--light);
+  }
+}
+
+.headIcon {
+  width: 44px; height: 44px;
+  border-radius: var(--radius-sm);
+  @include flex(row, center, center, 0);
+  svg { font-size: 1.1rem; color: #fff; }
+}
+
+.okIcon { background: var(--success); }
+.noIcon { background: var(--danger); }
+
+.ok { color: var(--success); font-size: 0.85rem; flex-shrink: 0; }
+.no { color: var(--danger);  font-size: 0.85rem; flex-shrink: 0; }
+
+.note {
+  text-align: center;
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.45);
+  margin-top: 2rem;
+
+  a { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; }
+}

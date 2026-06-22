@@ -1,0 +1,114 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.section {
+  background: var(--gray-100);
+  padding-block: var(--section-py);
+}
+
+.header {
+  text-align: center;
+  margin-bottom: clamp(3rem, 5vw, 4.5rem);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+
+  @include tablet { grid-template-columns: 1fr; max-width: 480px; margin-inline: auto; }
+  @include mobile { grid-template-columns: 1fr; }
+}
+
+.card {
+  background: #fff;
+  border-radius: var(--radius-xl);
+  padding: 2.2rem;
+  border: 1.5px solid var(--gray-200);
+  box-shadow: var(--shadow-sm);
+  @include flex(column, flex-start, flex-start, 0);
+  transition: box-shadow 0.3s, border-color 0.3s;
+
+  &:hover {
+    box-shadow: var(--shadow-md);
+    border-color: rgba(0, 87, 217, 0.2);
+  }
+}
+
+.primary {
+  border-color: var(--secondary);
+  box-shadow: 0 0 0 2px rgba(0,87,217,0.15), var(--shadow-md);
+}
+
+.flag {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--secondary);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+  background: rgba(0, 87, 217, 0.06);
+  padding: 0.35rem 0.9rem;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(0, 87, 217, 0.15);
+}
+
+.locName {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 1.25rem;
+}
+
+.infoRow {
+  @include flex(row, flex-start, flex-start, 0.6rem);
+  margin-bottom: 1.25rem;
+}
+
+.infoIcon {
+  color: var(--secondary);
+  font-size: 0.9rem;
+  margin-top: 0.2rem;
+  flex-shrink: 0;
+}
+
+.address {
+  font-size: 0.88rem;
+  color: #555;
+  line-height: 1.7;
+  white-space: pre-line;
+}
+
+.phones {
+  @include flex(column, flex-start, flex-start, 0.5rem);
+  margin-bottom: 1.5rem;
+  width: 100%;
+}
+
+.phone {
+  @include flex(row, center, flex-start, 0.5rem);
+  font-size: 0.88rem;
+  color: var(--primary);
+  font-weight: 500;
+  transition: color 0.2s;
+
+  svg { font-size: 0.8rem; color: var(--secondary); }
+  &:hover { color: var(--secondary); }
+}
+
+.waBtn {
+  @include flex(row, center, center, 0.5rem);
+  width: 100%;
+  background: rgba(37, 211, 102, 0.08);
+  color: #1a9a42;
+  border: 1.5px solid rgba(37, 211, 102, 0.25);
+  border-radius: var(--radius-md);
+  padding: 0.75rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-top: auto;
+  transition: all 0.25s;
+
+  svg { font-size: 1rem; }
+  &:hover { background: #25D366; color: #fff; border-color: #25D366; }
+}
