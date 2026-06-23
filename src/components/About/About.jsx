@@ -9,7 +9,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const stats = [
   { value: 500, suffix: '+', label: 'Happy Customers' },
-  { value: 3,   suffix: 'yrs', label: 'In Operation' },
+  { value: 10,  suffix: 'yrs', label: 'In Operation' },
   { value: 99,  suffix: '%',   label: 'On-Time Rate' },
   { value: 3,   suffix: '',    label: 'UK & Nigeria Offices' },
 ];
